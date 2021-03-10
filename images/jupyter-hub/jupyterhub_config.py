@@ -151,7 +151,7 @@ c.JupyterHub.hub_ip = '0.0.0.0'
 
 #     c.KubeSpawner.image = image
 
-c.KubeSpawner.image = "jupyter/pyspark-notebook:latest"
+c.KubeSpawner.image = "jupyter/minimal-notebook:latest"
 
 c.KubeSpawner.service_account = "hub"
 
