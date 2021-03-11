@@ -151,7 +151,7 @@ c.JupyterHub.hub_ip = '0.0.0.0'
 
 #     c.KubeSpawner.image = image
 
-c.KubeSpawner.image = "jupyter/minimal-notebook:latest"
+c.KubeSpawner.image = "swazonic/basic-images:jhsingle-streamlit"
 
 c.KubeSpawner.service_account = "hub"
 
