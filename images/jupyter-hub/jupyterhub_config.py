@@ -151,9 +151,26 @@ c.JupyterHub.hub_ip = '0.0.0.0'
 
 #     c.KubeSpawner.image = image
 
-c.KubeSpawner.image = "swazonic/basic-images:jhsingle-streamlit"
+c.KubeSpawner.image = "jupyter/minimal-notebook"
 
 c.KubeSpawner.service_account = "hub"
+
+c.KubeSpawner.profile_list = [
+    {
+        'display_name': 'Minimal Notebook',
+        'slug': 'minimal-notebook',
+        'default': True,
+        'kubespawner_override': {
+            'image': 'jupyter/minimal-notebook'
+        }
+    }, {
+        'display_name': 'Streamlit Dashboard',
+        'slug': 'jhsingle-streamlit',
+        'kubespawner_override': {
+            'image': 'swazonic/basic-images:jhsingle-streamlit'
+        }
+    }
+]
 
 # if get_config('singleuser.imagePullSecret.enabled'):
 #     c.KubeSpawner.image_pull_secrets = 'singleuser-image-credentials'
