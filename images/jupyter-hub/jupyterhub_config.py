@@ -169,6 +169,18 @@ c.KubeSpawner.profile_list = [
         'kubespawner_override': {
             'image': 'swazonic/basic-images:jhsingle-streamlit'
         }
+    }, {
+        'display_name': 'Streamlit Dashboard External App',
+        'slug': 'jhsingle-streamlit-external',
+        'kubespawner_override': {
+            'image': 'swazonic/basic-images:jhsingle-streamlit-external'
+        }
+    }, {
+        'display_name': 'Voila Dashboard',
+        'slug': 'jhsingle-voila',
+        'kubespawner_override': {
+            'image': 'swazonic/basic-images:jhsingle-voila'
+        }
     }
 ]
 
