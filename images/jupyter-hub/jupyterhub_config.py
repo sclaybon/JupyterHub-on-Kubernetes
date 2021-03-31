@@ -184,6 +184,22 @@ c.KubeSpawner.profile_list = [
     }
 ]
 
+c.JupyterHub.tornado_settings = {
+    'headers': {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Methods': '*'
+   },
+}
+
+c.NotebookApp.allow_origin = '*'
+c.NotebookApp.tornado_settings = {
+   'headers': {
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Methods': '*'
+   },
+}
+
 # if get_config('singleuser.imagePullSecret.enabled'):
 #     c.KubeSpawner.image_pull_secrets = 'singleuser-image-credentials'
 
