@@ -171,9 +171,15 @@ c.KubeSpawner.profile_list = [
         }
     }, {
         'display_name': 'Streamlit Dashboard External App',
-        'slug': 'jhsingle-streamlit-external',
+        'slug': 'jhsingle-streamlit-external',  
         'kubespawner_override': {
             'image': 'swazonic/basic-images:jhsingle-streamlit-external'
+        }
+    }, {
+        'display_name': 'Streamlit Dashboard Variable App',
+        'slug': 'jhsingle-streamlit-variable',
+        'kubespawner_override': {
+            'image': 'swazonic/basic-images:jhsingle-streamlit-variable'
         }
     }, {
         'display_name': 'Voila Dashboard',
@@ -199,6 +205,11 @@ c.NotebookApp.tornado_settings = {
       'Access-Control-Allow-Methods': '*'
    },
 }
+
+c.KubeSpawner.environment = {
+    'USER_OPTIONS': lambda spawner: str(spawner.user_options)
+}
+
 
 # if get_config('singleuser.imagePullSecret.enabled'):
 #     c.KubeSpawner.image_pull_secrets = 'singleuser-image-credentials'
