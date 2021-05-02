@@ -1,18 +1,26 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: task-pv-pod
+  name: polus-notebooks-hub-backend-deployment
 spec:
-  volumes:
-    - name: task-pv-storage
-      persistentVolumeClaim:
-        claimName: task-pv-claim
-  containers:
-    - name: task-pv-container
-      image: swazonic/polus-notebooks-hub-backend:latest
-      ports:
-        - containerPort: 8002
-          name: "http-server"
-      volumeMounts:
-        - mountPath: "/usr/share/sandbox/"
-          name: task-pv-storage
+  selector:
+    matchLabels:
+      app: polus-notebooks-hub-backend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: polus-notebooks-hub-backend
+    spec:
+      # volumes:
+      #   - name: task-pv-storage
+      #     persistentVolumeClaim:
+      #       claimName: task-pv-claim
+      containers:
+        - name: polus-notebooks-hub-backend
+          image: swazonic/polus-notebooks-hub-backend:latest
+          ports:
+            - containerPort: 8002
+          # volumeMounts:
+          #   - mountPath: "/usr/share/sandbox/"
+          #     name: task-pv-storage
