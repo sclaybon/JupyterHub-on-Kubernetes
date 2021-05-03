@@ -1,0 +1,43 @@
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
+#     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+#     nginx.ingress.kubernetes.io/proxy-body-size: "0"
+#   labels:
+#     hub.jupyter.org/network-access-hub: "true"  # access the hub api
+#     hub.jupyter.org/network-access-proxy-http: "true"  # access proxy public http endpoint
+#     hub.jupyter.org/network-access-proxy-api: "true"  # access proxy api
+#     hub.jupyter.org/network-access-singleuser: "true"  # access single-user servers directly
+#   name: frontend-ingress
+# spec:
+#   rules:
+#   - host: polus-notebooks-hub-ui.ci.aws.labshare.org
+#     http:
+#       paths:
+#       - backend:
+#           serviceName: polus-notebooks-hub-frontend
+#           servicePort: 80
+#         path: /
+  
+
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: frontend-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: "0s"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: polus-notebooks-hub-ui.ci.aws.labshare.org
+    http:
+      paths:
+      - backend:
+          serviceName: notebooks-hub-frontend-service
+          servicePort: 4200 #this should be the port number from the 
+        path: /
+

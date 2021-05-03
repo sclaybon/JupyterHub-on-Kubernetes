@@ -1,13 +1,36 @@
+# External Notebooks Hub UI Service definition
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: notebooks-hub-frontend-service
+#   namespace: polus-notebooks
+# spec:
+#   type: ClusterIP
+#   ports:
+#   - port: 4200
+#     name: http
+#     targetPort: 80
+#   selector:
+#     application: polus-notebooks-hub-frontend
+# {"apiVersion":"v1","kind":"Service","metadata":
+# {"annotations":{},"name":"wipp-tensorboard","namespace":"default"},
+# "spec":{"ports":[{"name":"6006","port":6006,"targetPort":6006}],
+# "selector":{"app":"wipp-tensorboard"},"type":"NodePort"}}
+
+
+# External backend UI Service definition
 apiVersion: v1
 kind: Service
 metadata:
-  name: polus-notebooks-hub-backend-service
+  name: notebooks-hub-backend-service
+  namespace: polus-notebooks
 spec:
+  type: NodePort
+  ports:
+  - port: 8002
+    name: "8002"
+    targetPort: 8002
   selector:
     app: polus-notebooks-hub-backend
-  type: LoadBalancer 
-  ports:
-    - protocol: TCP
-      port: 8002
-      targetPort: 8002
-      nodePort: 31000
+
+# make sure the service selection matches the pods labels
