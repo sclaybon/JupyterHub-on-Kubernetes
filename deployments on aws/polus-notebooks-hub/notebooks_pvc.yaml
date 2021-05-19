@@ -1,0 +1,15 @@
+#################################################################################################################
+# Create PVC for shared notebook storage
+#################################################################################################################
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-polus-notebooks
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: aws-efs-2
+

@@ -45,3 +45,10 @@ spec:
           image: swazonic/polus-notebooks-hub-backend:latest
           ports:
             - containerPort: 8002
+          volumeMounts:
+            - mountPath: "/opt/shared/notebooks"
+              name: notebookspv
+      volumes:
+        - name: notebookspv
+          persistentVolumeClaim:
+            claimName: pvc-polus-notebooks

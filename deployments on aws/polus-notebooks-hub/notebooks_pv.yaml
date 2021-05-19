@@ -1,0 +1,20 @@
+#################################################################################################################
+# Create PV for shared notebook storage
+#use the same nfs path as the previously created jupyterhub nsf pv 
+#################################################################################################################
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-polus-notebooks
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 5Gi
+  nfs:
+    path: /notebooks-pv-claim-pvc-039e9019-5cab-11ea-8c05-0e1287114e51
+    server: fs-bdc54d3d.efs.us-east-1.amazonaws.com
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: aws-efs-2
+  volumeMode: Filesystem
